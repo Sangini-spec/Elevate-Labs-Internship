@@ -1,0 +1,7 @@
+[
+    {
+        "type": "CSRF",
+        "severity": "Medium",
+        "evidence": "No CSRF token found"
+    }
+]

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Back Button -->
+    <a href="/" class="back-btn">← Back to Scanner</a>
+
+    <h1>Scan Results</h1>
+
+    {% if results %}
+        <div class="results-container">
+            {% for r in results %}
+                <div class="result-card {{ r.severity | lower }}">
+                    <div class="result-header">
+                        <span class="vuln-type">{{ r.type }}</span>
+                        <span class="severity {{ r.severity | lower }}">
+                            {{ r.severity }}
+                        </span>
+                    </div>
+
+                    <p class="evidence">
+                        <strong>Evidence:</strong> {{ r.evidence }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-results">
+            No vulnerabilities detected.
+        </p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
+
